@@ -4,6 +4,8 @@ class ClockEvent < ApplicationRecord
 
   belongs_to :user
 
+  scope :not_checkout_yet, -> { where('CHECKIN_AT IS NOT NULL AND CHECKOUT_AT IS NULL') }
+
   private
   def checkout_at_cannot_before_checkin_at
     if checkout_at.present? && checkout_at <= checkin_at
