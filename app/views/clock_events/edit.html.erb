@@ -1,2 +1,7 @@
 <h1>ClockEvents#edit</h1>
-<p>Find me in app/views/clock_events/edit.html.erb</p>
+
+<%= form_for @clock_event do |f| %>
+  <%= f.label :checkin_at %>: <%= f.date_select :checkin_at %> <%= f.time_select :checkin_at, :ignore_date => true %><br>
+  <%= f.label :checkout_at %>: <%= f.date_select :checkout_at %><%= f.time_select :checkout_at, :ignore_date => true %><br>
+  <%= f.submit "Submit" %>
+<% end %>
