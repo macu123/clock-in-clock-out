@@ -12,4 +12,6 @@ Rails.application.routes.draw do
       post :checkout
     end
   end
+
+  root to: 'clock_events#index'
 end
