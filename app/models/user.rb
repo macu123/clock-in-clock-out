@@ -6,7 +6,7 @@ class User < ApplicationRecord
     scope: :last_name,
     message: "should be unique with same last name"
   }
-  validates :email, uniqueness: true
+  validates :email, uniqueness: true, format: { with: URI::MailTo::EMAIL_REGEXP } 
 
   has_many :clock_events
 
