@@ -1,6 +1,6 @@
 class ClockEvent < ApplicationRecord
   validates :checkin_at, :user_id, presence: true
-  validates :checkout_at_cannot_before_checkin_at
+  validate :checkout_at_cannot_before_checkin_at
 
   belongs_to :user
 
