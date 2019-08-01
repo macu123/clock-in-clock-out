@@ -6,7 +6,7 @@ class ApplicationController < ActionController::Base
 
   def authorize
     unless current_user
-      redirect_to '/login', notice: "You're not authorized"
+      redirect_to '/login', notice: "You're not authorized to perform this action."
     end
   end
 end

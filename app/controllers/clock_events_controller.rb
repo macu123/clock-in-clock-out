@@ -7,7 +7,7 @@ class ClockEventsController < ApplicationController
     clock_event.checkin_at = Time.now
     clock_event.save
 
-    redirect_to clock_events_url, notice: "You have check in successfully."
+    redirect_to clock_events_url, notice: "You have checked in successfully."
   end
 
   def checkout
@@ -15,7 +15,7 @@ class ClockEventsController < ApplicationController
     clock_event.checkout_at = Time.now
     clock_event.save
 
-    redirect_to clock_events_url, notice: "You have check out successfully."
+    redirect_to clock_events_url, notice: "You have checked out successfully."
   end
 
   def index
