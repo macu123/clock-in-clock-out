@@ -1,6 +1,12 @@
 <h1>ClockEvents#edit</h1>
 
 <%= form_for @clock_event do |f| %>
+  <ul>
+    <% @clock_event.errors.full_messages.each do |msg| %>
+      <li><%= msg %></li>
+    <% end %>
+  </ul>
+  
   <%= f.label :checkin_at %>: <%= f.date_select :checkin_at %> <%= f.time_select :checkin_at, :ignore_date => true %><br>
   <%= f.label :checkout_at %>: <%= f.date_select :checkout_at %><%= f.time_select :checkout_at, :ignore_date => true %><br>
   <%= f.submit "Submit" %>
