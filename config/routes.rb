@@ -6,8 +6,8 @@ Rails.application.routes.draw do
   get '/signup' => 'users#new'
   post '/users' => 'users#create'
 
-  resources :clock_events, only: [:edit, :update, :destroy] do
-    member do
+  resources :clock_events, only: [:index, :edit, :update, :destroy] do
+    collection do
       post :checkin
       post :checkout
     end
