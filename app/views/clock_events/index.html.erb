@@ -1,0 +1,22 @@
+<h1>ClockEvents#index</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Check In</th>
+      <th>Check Out</th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @clock_events.each do |clock_event| %>
+      <tr>
+        <td><%= clock_event.checkin_at&.strftime('%m-%e-%y %H:%M') %></td>
+        <td><%= clock_event.checkout_at&.strftime('%m-%e-%y %H:%M') %></td>
+        <td><%= link_to 'Edit', edit_clock_event_path(clock_event) %></td>
+        <td><%= link_to 'Destroy', clock_event, method: :delete, data: { confirm: 'Are you sure want to delete?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
