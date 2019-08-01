@@ -1,4 +1,5 @@
 class ClockEventsController < ApplicationController
+  before_action :authorize
   before_action :set_clock_event, only: [:edit, :update, :destroy]
 
   def checkin
