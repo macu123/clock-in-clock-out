@@ -5,12 +5,20 @@ class ClockEventsController < ApplicationController
     clock_event = current_user.clock_events.new
     clock_event.checkin_at = Time.now
     clock_event.save
+
+    redirect_to clock_events_url, notice: "You have check in successfully."
   end
 
   def checkout
     clock_event = current_user.clock_events.not_checkout_yet.last
     clock_event.checkout_at = Time.now
     clock_event.save
+
+    redirect_to clock_events_url, notice: "You have check out successfully."
+  end
+
+  def index
+    @clock_events = current_user.clock_events
   end
 
   def edit
