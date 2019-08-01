@@ -1,6 +1,7 @@
 class ClockEvent < ApplicationRecord
   validates :checkin_at, :user_id, presence: true
-  validate :checkin_checkout_cannot_in_the_future
+  validate :checkin_at_cannot_in_the_future
+  validate :checkout_at_cannot_in_the_future
   validate :checkout_at_cannot_before_checkin_at
 
   belongs_to :user
@@ -8,10 +9,14 @@ class ClockEvent < ApplicationRecord
   scope :not_checkout_yet, -> { where('CHECKIN_AT IS NOT NULL AND CHECKOUT_AT IS NULL') }
 
   private
-  def checkin_checkout_cannot_in_the_future
+  def checkin_at_cannot_in_the_future
     if checkin_at.present? && checkin_at > Time.now
       errors.add(:checkin_at, "cannot be in the future")
-    elsif checkout_at.present? && checkout_at > Time.now
+    end
+  end
+
+  def checkout_at_cannot_in_the_future
+    if checkout_at.present? && checkout_at > Time.now
       errors.add(:checkout_at, "cannnot be in the future")
     end
   end
