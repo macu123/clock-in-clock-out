@@ -13,4 +13,8 @@ class User < ApplicationRecord
   def full_name
     [first_name, last_name].join(' ')
   end
+
+  def not_checkout_yet?
+    clock_events.not_checkout_yet.exists?
+  end
 end
